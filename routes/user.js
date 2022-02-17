@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../models/index');
+const verifyToken = require('../middleware/authJwt');
 
 const getNextSequence = async (name) => {
     await db.Counter.find({
@@ -37,7 +38,7 @@ const getNextSequence = async (name) => {
     return id;
 }
 
-router.get('/', async (req, res) => {
+router.get('/', verifyToken, async (req, res) => {
     await db.User.find({})
         .then((users) => {
             res.json(users);
@@ -48,7 +49,7 @@ router.get('/', async (req, res) => {
         });
 });
 
-router.post('/', async (req, res) => {
+router.post('/', verifyToken, async (req, res) => {
     let id = await getNextSequence('userid');
     let user = {
         _id: id,
