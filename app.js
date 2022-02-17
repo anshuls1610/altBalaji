@@ -15,7 +15,7 @@ const indexRouter = require('./routes/index');
 var userRouter = require('./routes/user');
 
 app.use('/', indexRouter);
-app.use('/api/user', userRouter);
+app.use('/api/users', userRouter);
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
