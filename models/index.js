@@ -14,3 +14,4 @@ mongoose.connect(url, {
 });
 
 module.exports.User = require('./user');
+module.exports.Counter = require('./counter');
