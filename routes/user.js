@@ -69,4 +69,36 @@ router.post('/', async (req, res) => {
         });
 });
 
+router.get('/:id', async (req, res) => {
+    await db.User.find({ _id: req.params.id })
+        .then((user) => {
+            res.json(user);
+        }).catch((err) => {
+            console.log('error while fetching user: ', err);
+            throw new Error(err);
+        });
+});
+
+router.put('/:id', async (req, res) => {
+    await db.User.findByIdAndUpdate(
+        { _id: req.params.id },
+        req.body
+    ).then((user) => {
+        res.status(200).json(user);
+    }).catch((err) => {
+        console.log('error while updating user: ', err);
+        throw new Error(err);
+    });
+});
+
+router.delete('/:id', async (req, res) => {
+    await db.User.findByIdAndDelete(req.params.id)
+        .then((user) => {
+            res.status(200).json(user);
+        }).catch((err) => {
+            console.log('error while deleting user: ', err);
+            throw new Error(err);
+        });
+});
+
 module.exports = router;
