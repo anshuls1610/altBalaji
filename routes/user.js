@@ -9,7 +9,7 @@ router.get('/', async (req, res) => {
         })
         .catch((err) => {
             console.log(err);
-        })
+        });
 });
 
 router.post('/', (req, res) => {
