@@ -20,9 +20,9 @@ DATABASEURLTEST= mongodb+srv://user:user1234@cluster0.mwmpe.mongodb.net/altBalaj
 
 second ->
 
-application start: npm start ;
+application start: npm start
 
-test case start: npm test ;
+test case start: npm test
 
 Test Cases Include ->
 
