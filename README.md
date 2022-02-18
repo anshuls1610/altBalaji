@@ -11,8 +11,8 @@ DATABASEURL= mongodb+srv://user:user1234@cluster0.mwmpe.mongodb.net/altBalajiTes
 DATABASEURLTEST= mongodb+srv://user:user1234@cluster0.mwmpe.mongodb.net/altBalajiUnitTest?retryWrites=true&w=majority
 
 second ->
-application start: npm start
-test case start: npm test
+application start: npm start ;
+test case start: npm test ;
 
 Test Cases Include ->
 
