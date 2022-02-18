@@ -47,3 +47,14 @@ Test Cases Include ->
 
 working url of above endpoints ->
 https://alt-balaji-test-anshul.herokuapp.com/api/users
+
+db schema ->
+
+const UserSchema = new mongoose.Schema({
+id: Number,
+name: String,
+address: String,
+dob: String,
+state: String,
+createdAt: Date
+});
