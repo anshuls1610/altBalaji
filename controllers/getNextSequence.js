@@ -1,6 +1,9 @@
 const db = require('../models/index');
 
 module.exports = async (name) => {
+    if (process.env.NODE_ENV == 'test') {
+        return 1;
+    }
     console.log('name', name)
     await db.Counter.find({
         _id: 'userid',

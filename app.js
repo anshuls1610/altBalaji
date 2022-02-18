@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const db = require('./models/index');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const loginController = require('./controllers/login');
@@ -24,6 +25,16 @@ app.use('/', indexRouter);
 app.use('/api/users', userRouter);
 
 const port = process.env.PORT || 3000;
-app.listen(port, () => {
-    console.log('Listening on port', port);
-})
+if (process.env.NODE_ENV != 'test') {
+    db.connect().then(() => {
+        app.listen(port, () => {
+            console.log('Listening on port', port);
+        });
+    });
+} else {
+    app.listen(port, () => {
+        console.log('Listening on port', port);
+    });
+}
+
+module.exports = app;

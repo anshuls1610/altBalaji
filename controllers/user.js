@@ -4,7 +4,11 @@ const getNextSequence = require('./getNextSequence');
 exports.getAllUsers = async (req, res) => {
     await db.User.find({})
         .then((users) => {
-            res.json(users);
+            if (users.length > 0) {
+                res.json(users);
+            } else {
+                res.status(404).send('no users found!');
+            }
         })
         .catch((err) => {
             console.log('error while finding user: ', err);
@@ -36,7 +40,11 @@ exports.createUser = async (req, res) => {
 exports.getUserById = async (req, res) => {
     await db.User.findOne({ _id: req.params.id })
         .then((user) => {
-            res.json(user);
+            if (user) {
+                res.json(user);
+            } else {
+                res.status(404).send('user not found!');
+            }
         }).catch((err) => {
             console.log('error while fetching user: ', err);
             throw new Error(err);
@@ -48,7 +56,11 @@ exports.updateUserById = async (req, res) => {
         { _id: req.params.id },
         req.body
     ).then((user) => {
-        res.status(200).json(user);
+        if (user) {
+            res.status(200).json(user);
+        } else {
+            res.status(404).send('user not found!');
+        }
     }).catch((err) => {
         console.log('error while updating user: ', err);
         throw new Error(err);
@@ -58,7 +70,11 @@ exports.updateUserById = async (req, res) => {
 exports.removeUserById = async (req, res) => {
     await db.User.findByIdAndDelete(req.params.id)
         .then((user) => {
-            res.status(200).json(user);
+            if (user) {
+                res.status(200).json(user);
+            } else {
+                res.status(404).send('user not found!');
+            }
         }).catch((err) => {
             console.log('error while deleting user: ', err);
             throw new Error(err);
