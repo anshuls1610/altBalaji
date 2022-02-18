@@ -1,8 +1,11 @@
 # altBalaji
 
 first ->
+
 clone repo
+
 npm i
+
 add .env ->
 
 .env ->
