@@ -1,3 +1,8 @@
 # altBalaji
 
-application start: node app.js
+first ->
+npm i
+
+second ->
+application start: npm start
+test case start: npm test
