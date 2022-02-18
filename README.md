@@ -58,3 +58,5 @@ dob: String,
 state: String,
 createdAt: Date
 });
+
+contains jwt token login via login controller with hardcoded user & password.
