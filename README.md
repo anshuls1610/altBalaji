@@ -34,3 +34,6 @@ Test Cases Include ->
 
 8. if user found -> send user json with 200.
 9. Else -> send 404 with user not found
+
+working url of above endpoints ->
+https://alt-balaji-test-anshul.herokuapp.com/api/users
